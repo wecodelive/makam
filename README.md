@@ -1,6 +1,6 @@
 
 # DO TOUCH MASTER
-## Pull for the staging and push your changes to staging 
+## Pull from staging and push your changes to staging 
 
 
 
