@@ -1,43 +1,18 @@
-import { useState } from "react";
-import ViteImges from "./viteImges";
-import Head from "./head";
 import "./App.css";
+import { router } from "./router";
+import { RouterProvider } from "react-router-dom";
+// import Notification from "components/Notifications";
+// import Loader from "components/Modals/Loader";
+
+// import { MIC01CProvider } from "context/MIC01CContext";
 
 function App() {
-  const [count, setCount] = useState(5);
-
-  const [isName, setIsName] = useState("");
-
-  function handleChange(e) {
-    setIsName("subomi");
-  }
-
-  console.log(isName);
   return (
-    <>
-      <ViteImges />
-      <Head />
-
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p className="text-stone-50 font-extralight text-3xl">
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-
-      <p
-        onClick={() => {
-          handleChange();
-        }}
-      >
-        name is {isName}
-      </p>
-    </>
+    <div className="relative h-screen">
+      {/* <Loader /> */}
+      {/* <Notification /> */}
+      <RouterProvider router={router} />
+    </div>
   );
 }
 
