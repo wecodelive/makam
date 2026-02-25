@@ -36,13 +36,13 @@ export default function Index() {
               description="New Summer Collection"
               name="Full Sleeve Zipper"
               key={item}
-              onClick={() => navigate("/product/1")}
+              onClick={() => navigate(`/product/${item}`)}
             />
           ))}
         </div>
 
-        <div className="mt-10">
-          <Button />
+        <div className="mt-10" onClick={() => navigate("/products")}>
+          <Button showArrow={true} value={"Go To Shop"} />
         </div>
       </div>
     </>

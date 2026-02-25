@@ -565,6 +565,34 @@ textarea::placeholder {
   /* 1 */
 }
 
+.input-container > label,
+.input-container > input:not([value=""]) ~ label,
+.textarea-container > label,
+.textarea-container > textarea:empty ~ label,
+.dropdown-container > label {
+  position: absolute;
+  left: 12px;
+  top: 10px;
+  transition: 0.2s;
+  font-size: 14px;
+}
+
+.input-container > input:focus ~ label,
+.input-container > input:not(:placeholder-shown) ~ label,
+.textarea-container > textarea:focus ~ label,
+.textarea-container > textarea:not(:placeholder-shown) ~ label,
+.dropdown-container > input:not(:placeholder-shown) ~ label {
+  left: 12px;
+  top: -16px;
+  font-size: 12px;
+}
+
+input:-webkit-autofill + label {
+  left: 12px;
+  top: -16px;
+  font-size: 12px;
+}
+
 /*
 Set the default cursor for buttons.
 */
