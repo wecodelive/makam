@@ -1,7 +1,7 @@
 import React from "react";
 import ProductFrame from "../../../components/ProductFrame";
 import SizeItem from "../components/SizeItem";
-import Button from "/Users/ajayi/We Code/makam/src/components/Buttons";
+import Button from "../../../components/Buttons";
 // import SizeItem from "../components/SizeItem";
 
 export default function Product() {
