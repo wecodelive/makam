@@ -1,6 +1,6 @@
 import React from "react";
 import { Search } from "../../components/Inputs";
-import { ChevronRight } from "lucide-react";
+import { ChevronDown, ChevronRight } from "lucide-react";
 import FilterItem from "./components/FilterItem";
 import ProductFrame from "../../components/ProductFrame";
 import Filter from "./components/Filter";
@@ -33,7 +33,12 @@ export default function Products() {
             className="flex items-center gap-2 text-[16px] capitalize font-bold tracking-[2px]"
           >
             Filters
-            <ChevronRight className="" size={18} />
+            {showFilter ? (
+              <ChevronDown className="rotate-90" size={18} />
+            ) : (
+              <ChevronRight className="" size={18} />
+            )}
+            {/* <ChevronRight className="" size={18} /> */}
           </h3>
 
           <div className="flex w-full h-full gap-4">

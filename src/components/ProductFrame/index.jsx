@@ -20,9 +20,12 @@ export default function ProductFrame({
 
   return (
     <>
-      <div className="gap-2 w-full h-fit" onClick={onClick}>
+      <div
+        className={`gap-2 ${width ? "" : "w-[169px]"} ${height ? "" : "h-fit"}`}
+        onClick={onClick}
+      >
         <div
-          className={`w-full mb-1.5 ${height ? "" : "h-44"} outline-1 outline-[#D7D7D7] bg-[url('/placeHolder.jpg')] bg-cover bg-no-repeat bg-center`}
+          className={`${width ? "" : "w-[169px]"} mb-1.5 ${height ? "" : "h-44"} outline-1 outline-[#D7D7D7] bg-[url('/placeHolder.jpg')] bg-cover bg-no-repeat bg-center`}
           style={sizeStyle}
         ></div>
 
