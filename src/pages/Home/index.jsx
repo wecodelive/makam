@@ -1,4 +1,4 @@
-import React from "react";
+  import React from "react";
 import ProductFrame from "../../components/ProductFrame";
 import { Search } from "../../components/Inputs";
 import Button from "../../components/Buttons";

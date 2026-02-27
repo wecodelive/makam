@@ -7,6 +7,7 @@ import PageNotFound from "../pages/404";
 const Home = lazy(() => import("../pages/Home"));
 const Products = lazy(() => import("../pages/Products"));
 const Product = lazy(() => import("../pages/Products/Product"));
+const CheckOut = lazy(() => import("../pages/Checkout"))
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "product/:id",
         element: <Product />,
+      },
+      {
+        path: "checkout",
+        element: <CheckOut />
       },
     ],
   },
