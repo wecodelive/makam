@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from "react";
 import { createBrowserRouter, Outlet } from "react-router-dom";
-import AppLayout from "../layout/appLayout";
+import AppLayout, { CheckoutLayout } from "../layout/appLayout";
 import PageNotFound from "../pages/404";
 
 // Lazy Loaded Pages
@@ -11,15 +11,10 @@ const CheckOut = lazy(() => import("../pages/Checkout"))
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: (
-      <AppLayout>
-        <Outlet />
-      </AppLayout>
-    ),
+    element: <AppLayout />,
     children: [
       {
-        path: "",
+        path: "/",
         element: <Home />,
       },
       {
@@ -30,11 +25,16 @@ const router = createBrowserRouter([
         path: "product/:id",
         element: <Product />,
       },
+    ],
+  },
+  {
+    element: <CheckoutLayout />,
+    children: [
       {
-        path: "checkout",
+        path: "/checkout",
         element: <CheckOut />
       },
-    ],
+    ]
   },
   // {
   //     path: 'onboarding',

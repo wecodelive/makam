@@ -3,9 +3,19 @@ import { useNavigate } from 'react-router';
 import { Input } from '../../components/Inputs';
 import Button from '../../components/Buttons';
 import OrderCard from './components/orderCard';
-import { MoveLeft } from 'lucide-react';
+import { MoveLeft } from 'lucide-react'; 
+import { useState } from 'react';  
 
 const Checkout = () => {
+    const [checkoutState, setCheckoutState] = useState('information');
+    const handleCheckoutstate = (e) => {
+        const el = e.target;
+        setCheckoutState(prev => {
+            prev.classList.remove('','');
+            prev = el.id;
+        });
+        
+    }
     const orders = [
         {
             image: '/placeHolder.jpg',
@@ -21,14 +31,14 @@ const Checkout = () => {
     ]
     const handleSubmit = () => {}
   return (
-    <>
-        <MoveLeft />
+    <div className='px-[24px] py-[40px]'>
+        <MoveLeft className='mb-[30px]' />
         <div>
-            <h1 className="">CHECKOUT</h1>
-            <div className="flex">
-                <span>INFORMATION</span>
-                <span>SHIPPING</span>
-                <span>PAYMENT</span>
+            <h1 className="pb-[13px] font-[800] text-[20px] leading-[40px] tracking-[2px]">CHECKOUT</h1>
+            <div className="flex font-medium text-[12px] tracking-0 justify-between">
+                <span id='information'>INFORMATION</span>
+                <span id='shipping'>SHIPPING</span>
+                <span id='payment'>PAYMENT</span>
             </div>
         </div>
         <section className="flex flex-col gap-y-10 lg:flex-row">
@@ -152,7 +162,7 @@ const Checkout = () => {
 
             </article>
         </section>
-    </>
+    </div>
     
   )
 }

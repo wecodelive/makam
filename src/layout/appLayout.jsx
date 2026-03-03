@@ -23,3 +23,23 @@ export default function AppLayout() {
     </>
   );
 }
+
+export function CheckoutLayout() {
+  return (
+    <>
+      {/* <div className="flex relative py-0 sm:py-[24px] px-0 sm:px-[32px] h-screen bg-gray-900"> */}
+      <div className="w-full overflow-y-auto overflow-x-hidden">
+        <Suspense
+        fallback={
+          <div className="h-screen bg-black text-white w-full flex items-center justify-center">
+            Loading...
+          </div>
+        }>
+          
+          <Outlet />
+          <Footer />
+        </Suspense>
+      </div>
+    </>
+  );
+}
