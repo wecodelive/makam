@@ -1,7 +1,6 @@
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import useInputValidate from "../../hooks/useInputValidate";
-import { Eye as EyeOpen } from "lucide-react";
-import { EyeClosed } from "lucide-react";
+import { Eye as EyeOpen, EyeClosed } from "lucide-react";
 // import InputSuffixDropdown from "./InputSuffixDropdown";
 
 export default function Input({
@@ -23,7 +22,8 @@ export default function Input({
   inputMode,
   showError,
   disabled,
-  variant,
+  inputVariant,
+  placeVariant,
   onKeyDown,
   //   suffixDropdown,
   //   selected,
@@ -75,9 +75,9 @@ export default function Input({
           onBlur={onBlurAction}
           //onKeyDown={() => setError('')}
           onKeyDown={onKeyDown}
-          className={`${variant} 
+          className={`${inputVariant} 
             ${inputError ? "border-error" : "border-[#0000008C]"} 
-            h-[56px] px-4 text-black text-14 w-full outline-0 border font-campton_r hide_tap
+             text-black text-14 outline-0 border font-campton_r hide_tap
              focus:border-brand_primary focus:border
             ${disabled ? "bg-neutral_disabled border-neutral_stroke_2" : "bg-neutral_white"} 
             ${isPrefix ? "pl-[50px]" : ""}
@@ -89,7 +89,7 @@ export default function Input({
             htmlFor={id}
             className={`
             ${disabled ? "bg-none" : "bg-neutral_white"}
-            text-neutral_body mb-2 font-campton_r px-1 pt-2 cursor-text ${variant}`}
+            text-neutral_body mb-2 font-campton_r px-1 pt-2 cursor-text ${placeVariant}`}
           >
             {label}
           </label>

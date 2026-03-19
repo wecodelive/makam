@@ -1,4 +1,3 @@
-import React from "react";
 import { useNavigate } from "react-router";
 import { Input } from "../Inputs";
 import Button from "../Buttons";
@@ -9,7 +8,7 @@ export default function Footer() {
 
   return (
     <div className="bg-[#F5F5F5] h-fit flex flex-col  px-6 py-15 justify-center gap-6">
-      <img className="h-14 w-14 mb-3" src="/icons/logo.svg" alt="" srcSet="" />
+      <img className="h-14 w-14 mb-3" src="/icons/logo.svg" alt="logo"/>
 
       <div className="flex flex-col gap-4">
         <h3 className=" text-[20px] tracking-[2px]">
@@ -27,7 +26,8 @@ export default function Footer() {
           placeholder="Enter your email"
           id="email"
           type="email"
-          variant="h-[12px]"
+          inputVariant="h-[56px] w-full lg:w-1/3"
+          placeVariant=""
         />
 
         <Button value="Subscribe" />
@@ -59,9 +59,9 @@ export default function Footer() {
       </div>
 
       <div className="mt-3 flex self-center gap-3 text-3xl">
-        <Twitter className="h-8 w-8" />
-        <InstagramIcon className="h-8 w-8" />
-        <Facebook className="h-8 w-8" />
+        <Twitter className="h-8 w-8 hover:cursor-pointer" />
+        <InstagramIcon className="h-8 w-8 hover:cursor-pointer" />
+        <Facebook className="h-8 w-8 hover:cursor-pointer" />
       </div>
     </div>
   );
