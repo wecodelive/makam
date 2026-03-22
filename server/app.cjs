@@ -55,7 +55,7 @@ app.get("/api/health", (req, res) => {
 const userRoutes = require("./routes/userRouters.jsx");
 app.use("/api", userRoutes);
 
-app.use((error, req, res) => {
+app.use((error, req, res, next) => {
   console.error("Unhandled API error:", error);
   res.status(500).json({ success: false, message: "Internal server error" });
 });
