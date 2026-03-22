@@ -1,0 +1,8 @@
+{
+  "storeName": "Makam Fashion",
+  "storeEmail": "admin@makam.com",
+  "storePhone": "+234 800 000 0000",
+  "currency": "NGN",
+  "taxRate": "7.5",
+  "notificationsEnabled": true
+}

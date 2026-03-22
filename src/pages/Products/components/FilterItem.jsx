@@ -1,11 +1,19 @@
 import React from "react";
 
-export default function FilterItem({ label = "New" }) {
+export default function FilterItem({ label = "New", onClick, active = false }) {
   return (
-    <div className="h-[26px] w-[104px] border border-[#5E5E5E] flex items-center justify-center">
+    <button
+      type="button"
+      onClick={onClick}
+      className={`h-6.5 px-3 border flex items-center justify-center whitespace-nowrap ${
+        active
+          ? "border-black bg-black text-white"
+          : "border-[#5E5E5E] bg-transparent"
+      }`}
+    >
       <h4 className="text-[12px] font-medium uppercase tracking-[0.5px]">
         {label}
       </h4>
-    </div>
+    </button>
   );
 }

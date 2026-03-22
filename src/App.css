@@ -15,13 +15,15 @@
 .overlay {
     width: 100%;
     height: 100%;
-    background: #0F2E38;
-    opacity: 54%;
+    background: #ffffff;
+    /* opacity: 54%; */
     position: fixed;
     top: 0;
     left: 0;
     z-index: 50;
+    /* height: 100vh; */
     /* filter: blur(20px); */
+    overflow: hidden;
 }
 
 .modal {
@@ -40,6 +42,7 @@
 .modal-right {
     top: 0;
     right: 0;
+    height: 100dvh;
     opacity: 1;
     transition: 1s;
     display: flex;
@@ -65,7 +68,7 @@
 @media only screen and (max-width: 768px) {
     .modal-right {
         display: block;
-        margin-top: 100px;
+        /* margin-top: 50px; */
     }
 
     .modal-right-body {

@@ -11,6 +11,9 @@ export default function Search({
   inputMode,
   pattern,
   onChange,
+  onKeyDown,
+  onFocus,
+  onBlur,
   readOnly,
 }) {
   return (
@@ -20,7 +23,7 @@ export default function Search({
         name={name}
         type="search"
         label={label}
-        placeholder={"Search" || placeholder}
+        placeholder={placeholder || "Search"}
         value={value}
         defaultValue={defaultValue}
         inputMode={inputMode}
@@ -28,6 +31,9 @@ export default function Search({
         data-testid="search"
         aria-labelledby={id}
         onChange={onChange}
+        onKeyDown={onKeyDown}
+        onFocus={onFocus}
+        onBlur={onBlur}
         readOnly={readOnly}
         className={`
                 outline-amber-100 h-10 pl-8.5 pr-4 text-neutral_black

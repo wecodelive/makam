@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ChevronRight as ArrowRight } from "lucide-react";
 import { ChevronUp as ArrowUp } from "lucide-react";
 import { ChevronDown as ArrowDown } from "lucide-react";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function Accordion({
   title,
@@ -32,9 +32,9 @@ export default function Accordion({
           {iconPosition === "left" && (
             <>
               {state ? (
-                <ArrowDown data-testid="open" className="mr-[11px]" />
+                <ArrowDown data-testid="open" className="mr-2.75" />
               ) : (
-                <ArrowRight data-testid="close" className="mr-[11px]" />
+                <ArrowRight data-testid="close" className="mr-2.75" />
               )}
             </>
           )}

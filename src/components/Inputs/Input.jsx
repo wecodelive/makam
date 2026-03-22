@@ -77,10 +77,10 @@ export default function Input({
           onKeyDown={onKeyDown}
           className={`${inputVariant} 
             ${inputError ? "border-error" : "border-[#0000008C]"} 
-             text-black text-14 outline-0 border font-campton_r hide_tap
-             focus:border-brand_primary focus:border
+             text-black outline-0 border border-[#D9D9D9] font-campton_r hide_tap
+             focus:border-brand_primary focus:border h-11 text-[12px] w-full placeholder:py-1.5 px-4
             ${disabled ? "bg-neutral_disabled border-neutral_stroke_2" : "bg-neutral_white"} 
-            ${isPrefix ? "pl-[50px]" : ""}
+            ${isPrefix ? "pl-12.5" : ""}
             ${label ? "placeholder:opacity-0 focus:placeholder:opacity-100" : ""}
           `}
         />
@@ -105,7 +105,7 @@ export default function Input({
         )}
         {measurement && (
           <div
-            className={`flex items-center absolute top-0 ${isPrefix ? "left-[12px]" : "right-[12px]"} h-full`}
+            className={`flex items-center absolute top-0 ${isPrefix ? "left-3" : "right-3"} h-full`}
           >
             <div className="text-14 text-neutral_grey font-campton_r">
               {measurement}
@@ -122,11 +122,11 @@ export default function Input({
           </div>
         )} */}
       </div>
-      <p
+      {/* <p
         className={`font-campton_r ${inputError ? "text-error" : "text-neutral_body"} text-12`}
       >
         {(inputError && error) || helperText}
-      </p>
+      </p> */}
       {suggestions?.length ? (
         <ul className="flex flex-wrap">
           {suggestions?.map((suggestion) => (
@@ -134,7 +134,7 @@ export default function Input({
               key={suggestion}
               data-testid={suggestion}
               className="text-12 text-neutral_black font-campton_r
-                                        leading-[18px] bg-[#F2F3F3] py-[4px] px-[8px] mr-[8px] w-fit mb-[8px] cursor-pointer"
+                                        leading-4.5 bg-[#F2F3F3] py-1 px-2 mr-2 w-fit mb-2 cursor-pointer"
               onClick={() => {
                 onSuggestionSelect({
                   target: {

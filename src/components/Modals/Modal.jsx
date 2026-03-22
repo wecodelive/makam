@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import React, { useState } from "react";
 
 // import { Button } from "components/Buttons";
@@ -9,7 +8,6 @@ import { X as Close } from "lucide-react";
 
 import useWindowWidth from "../../hooks/useWindowWidth";
 import { MEDIUM_WIDTH } from "../../constants";
-import { useNavigate } from "react-router-dom";
 
 export default function Modal({
   children,
@@ -26,10 +24,10 @@ export default function Modal({
   btnAction,
   modalPadding,
 }) {
-  const navigate = useNavigate();
   const [showChildren, setShowChildren] = useState(true);
   //   const { pathname } = useLocation();
   const windowWidth = useWindowWidth();
+  const isRightModal = ["modal-right"].includes(position);
 
   const close = () => {
     setShowChildren(false);
@@ -62,14 +60,13 @@ export default function Modal({
   //   }, [showDrawer, authModal]);
 
   return (
-    <div>
-      <div className="z-[500] overlay"></div>
-      <div
-        className={`modal ${position || "modal-center"} ${styles} lg:ml-[60px]`}
-      >
+    <div className="fixed inset-0" style={{ zIndex: 100 }}>
+      <div className="overlay"></div>
+      <div className={`modal ${position || "modal-center"} ${styles}`}>
         {closeModal && !authModal && (
           <div
-            className={`${["modal-right"].includes(position) ? "mt-[11px]" : ""} flex justify-end mr-5 mb-[16px]`}
+            className={`${isRightModal ? "absolute top-4 right-5" : "relative flex justify-end mr-5 mb-[16px]"}`}
+            style={{ zIndex: 80 }}
           >
             <div
               onClick={close}
@@ -95,12 +92,12 @@ export default function Modal({
               initial={animate()?.initial}
               animate={animate()?.animate}
               exit={animate()?.exit}
-              className="flex w-full"
+              className={`flex w-full ${isRightModal ? "relative pt-[68px]" : ""}`}
             >
               <div
-                className={`${!authModal && "bg-neutral_white w-full overflow-scroll"} ${
-                  position ? "rounded-t-2xl" : "rounded-2xl"
-                } ${className}`}
+                className={`${!authModal && "bg-neutral_white w-full"} ${
+                  isRightModal ? "h-screen overflow-hidden" : "overflow-scroll"
+                } ${position ? "rounded-t-2xl" : "rounded-2xl"} ${className}`}
               >
                 {title && (
                   <div className="flex justify-between items-center py-[13px] border-b border-[#ECEEEE] px-[24px]">
@@ -123,7 +120,7 @@ export default function Modal({
                   </div>
                 )}
                 <div
-                  className={`${modalPadding || "px-6 py-4"} ${position === "modal-right" ? "md:h-[93vh] overflow-y-auto" : ""}`}
+                  className={`${modalPadding || "px-6 py-4"} ${position === "modal-right" ? "h-[calc(100vh-68px)] md:h-[93vh] overflow-y-auto overscroll-contain" : ""}`}
                 >
                   {subTitle && (
                     <p className="text-neutral_body font-campton_r text-14">
