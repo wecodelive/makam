@@ -48,12 +48,13 @@ app.use(express.json({ limit: "25mb" }));
 app.use(express.urlencoded({ extended: true, limit: "25mb" }));
 app.use(cookies());
 
-app.get("/api/health", (req, res) => {
+app.get(["/api/health", "/health"], (req, res) => {
   res.status(200).json({ success: true, message: "API is up" });
 });
 
 const userRoutes = require("./routes/userRouters.jsx");
 app.use("/api", userRoutes);
+app.use("/", userRoutes);
 
 app.use((error, req, res, next) => {
   console.error("Unhandled API error:", error);
