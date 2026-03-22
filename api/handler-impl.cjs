@@ -4,5 +4,5 @@ module.exports = function handler(req, res) {
   // Remove /api prefix from the request URL for the Express app
   const url = req.url.replace(/^\/api/, '') || '/';
   req.url = url;
-  return app(req, res);
+  app(req, res);
 };
