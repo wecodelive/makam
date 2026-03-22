@@ -4,7 +4,7 @@ import Button from "../../components/Buttons";
 import { MoveLeft } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import OrderCard from "./components/orderCard";
+import OrderCard from "./components/OrderCard";
 import {
   APP_CART_UPDATED_EVENT,
   clearCart,
