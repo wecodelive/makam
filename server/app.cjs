@@ -6,6 +6,7 @@ const app = express();
 
 const defaultOrigins = [
   "http://localhost:5173",
+  "http://localhost:3000",
 ];
 
 const envOrigins = (process.env.CORS_ORIGIN || "")
@@ -17,8 +18,12 @@ const allowedOrigins = new Set([...defaultOrigins, ...envOrigins]);
 
 app.use((req, res, next) => {
   const requestOrigin = req.headers.origin;
+  
+  // In production on Vercel, allow same-origin requests
+  const isSameOrigin = requestOrigin && process.env.NODE_ENV === "production";
+  const isAllowed = requestOrigin && (isSameOrigin || allowedOrigins.has(requestOrigin));
 
-  if (requestOrigin && allowedOrigins.has(requestOrigin)) {
+  if (isAllowed) {
     res.header("Access-Control-Allow-Origin", requestOrigin);
     res.header("Vary", "Origin");
     res.header("Access-Control-Allow-Credentials", "true");
