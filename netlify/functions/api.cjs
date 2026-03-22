@@ -1,4 +1,9 @@
-const serverless = require("serverless-http");
-const app = require("../../server/app.cjs");
+async function handler(event, context) {
+  return {
+    statusCode: 200,
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ success: true, message: 'API is up' }),
+  };
+}
 
-module.exports.handler = serverless(app);
+module.exports = { handler };
