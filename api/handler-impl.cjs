@@ -1,8 +1,15 @@
 const app = require('../server/app.cjs');
 
-module.exports = function handler(req, res) {
-  // Remove /api prefix from the request URL for the Express app
-  const url = req.url.replace(/^\/api/, '') || '/';
-  req.url = url;
+module.exports = (req, res) => {
+  // Vercel rewrites /api/(...) to /api/handler.js
+  // Remove /api prefix so Express routes correctly
+  if (req.url.startsWith('/api/')) {
+    req.url = req.url.slice(4); // Remove '/api' prefix
+  }
+  if (!req.url) {
+    req.url = '/';
+  }
+  
+  // Call Express app - it handles the request/response
   app(req, res);
 };
