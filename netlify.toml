@@ -1,5 +1,5 @@
 [build]
-  command = "npm install --include=dev && npm --prefix server install && npm run build"
+  command = "npm install --include=dev && npm --prefix server install --include=dev && npx --prefix server prisma generate && npm run build"
   publish = "dist"
 
 [functions]
