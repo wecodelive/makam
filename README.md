@@ -1,4 +1,35 @@
-# React + Vite
+# DO TOUCH MASTER
+
+## Pull from staging and push your changes to staging
+
+## React + Vite
+
+## API configuration for deployment
+
+Vite proxy is only used in local development (`npm run dev`). For production, set frontend env vars:
+
+- `VITE_API_BASE_URL` = your deployed backend origin (for example `https://api.yourdomain.com`)
+- If frontend and backend are served from the same domain, keep `VITE_API_BASE_URL` empty and use `/api` paths directly.
+
+Local dev proxy target can be changed with:
+
+- `VITE_API_PROXY_TARGET` (default: `http://localhost:3000`)
+
+Use `.env.example` as reference.
+
+## Netlify deployment
+
+This project now includes `netlify.toml` with:
+
+- Build command: `npm run build`
+- Publish directory: `dist`
+- SPA fallback redirect: `/* -> /index.html`
+
+In Netlify dashboard, set:
+
+- `VITE_API_BASE_URL=https://your-backend-domain.com`
+
+Do not set `VITE_API_BASE_URL` to `localhost` in production.
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
