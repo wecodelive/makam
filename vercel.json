@@ -5,7 +5,7 @@
     "NODE_ENV": "production"
   },
   "functions": {
-    "api/handler.cjs": {
+    "api/handler.js": {
       "memory": 1024,
       "maxDuration": 30
     }
@@ -13,7 +13,7 @@
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "/api/handler.cjs"
+      "destination": "/api/handler.js"
     }
   ]
 }
