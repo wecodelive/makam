@@ -1,0 +1,19 @@
+{
+  "buildCommand": "npm install && npm --prefix server install && npx --prefix server prisma generate && npm run build",
+  "outputDirectory": "dist",
+  "env": {
+    "NODE_ENV": "production"
+  },
+  "functions": {
+    "api/handler.cjs": {
+      "memory": 1024,
+      "maxDuration": 30
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/handler.cjs"
+    }
+  ]
+}
