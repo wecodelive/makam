@@ -17,20 +17,6 @@ Local dev proxy target can be changed with:
 
 Use `.env.example` as reference.
 
-## Netlify deployment
-
-This project now includes `netlify.toml` with:
-
-- Build command: `npm run build`
-- Publish directory: `dist`
-- SPA fallback redirect: `/* -> /index.html`
-
-In Netlify dashboard, set:
-
-- `VITE_API_BASE_URL=https://your-backend-domain.com`
-
-Do not set `VITE_API_BASE_URL` to `localhost` in production.
-
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:

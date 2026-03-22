@@ -4,7 +4,9 @@ const express = require("express");
 require("dotenv").config();
 const app = express();
 
-const defaultOrigins = ["http://localhost:5173"];
+const defaultOrigins = [
+  "http://localhost:5173",
+];
 
 const envOrigins = (process.env.CORS_ORIGIN || "")
   .split(",")
