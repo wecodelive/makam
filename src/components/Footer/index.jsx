@@ -1,14 +1,36 @@
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { Input } from "../Inputs";
 import Button from "../Buttons";
-import { Facebook, InstagramIcon, Twitch, Twitter } from "lucide-react";
+import { Facebook, InstagramIcon, Twitter } from "lucide-react";
 
 export default function Footer() {
   const navigate = useNavigate();
+  const [isAdminSession, setIsAdminSession] = useState(() =>
+    Boolean(localStorage.getItem("adminId")),
+  );
+  const profileRoute = isAdminSession ? "/admin" : "/user";
+  const [hasSession, setHasSession] = useState(() =>
+    Boolean(localStorage.getItem("userId") || localStorage.getItem("adminId")),
+  );
+
+  useEffect(() => {
+    const syncSession = () => {
+      setIsAdminSession(Boolean(localStorage.getItem("adminId")));
+      setHasSession(
+        Boolean(
+          localStorage.getItem("userId") || localStorage.getItem("adminId"),
+        ),
+      );
+    };
+
+    window.addEventListener("storage", syncSession);
+    return () => window.removeEventListener("storage", syncSession);
+  }, []);
 
   return (
     <div className="bg-[#F5F5F5] h-fit flex flex-col  px-6 py-15 justify-center gap-6">
-      <img className="h-14 w-14 mb-3" src="/icons/logo.svg" alt="logo"/>
+      <img className="h-14 w-14 mb-3" src="/icons/logo.svg" alt="logo" />
 
       <div className="flex flex-col gap-4">
         <h3 className=" text-[20px] tracking-[2px]">
@@ -34,27 +56,90 @@ export default function Footer() {
       </div>
 
       <div className="mt-6">
-        <ul className="text-[20px] tracking-[2px] space-y-1">
-          <li className="cursor-pointer" onClick={() => navigate("/")}>
+        <ul className="space-y-1.5">
+          <li
+            className="w-fit text-[20px] tracking-[2px] cursor-pointer underline underline-offset-4"
+            onClick={() => navigate("/")}
+          >
             Home
           </li>
-          <li className="cursor-pointer" onClick={() => navigate("/products")}>
+          <li
+            className="w-fit text-[20px] tracking-[2px] cursor-pointer underline underline-offset-4"
+            onClick={() => navigate("/products")}
+          >
             Collections
           </li>
-          <li className="cursor-pointer" onClick={() => navigate("/new")}>
-            New
+          <li
+            className="w-fit text-[20px] tracking-[2px] cursor-pointer underline underline-offset-4"
+            onClick={() => navigate("/products?q=new")}
+          >
+            New Arrivals
           </li>
+        </ul>
+      </div>
+
+      <div className="mt-1 border-t border-[#DFDFDF] pt-5 flex flex-col gap-2">
+        <p className="text-[11px] uppercase tracking-[1.5px] text-[#0000008C]">
+          Account
+        </p>
+        <ul className="space-y-1.5">
+          {hasSession ? (
+            <>
+              {isAdminSession && (
+                <li
+                  className="w-fit text-[16px] cursor-pointer underline underline-offset-4"
+                  onClick={() => navigate("/admin")}
+                >
+                  Admin
+                </li>
+              )}
+              <li
+                className="w-fit text-[16px] cursor-pointer underline underline-offset-4"
+                onClick={() => navigate(profileRoute)}
+              >
+                My Account
+              </li>
+              <li
+                className="w-fit text-[16px] cursor-pointer underline underline-offset-4"
+                onClick={() => navigate("/orders")}
+              >
+                Orders
+              </li>
+              <li
+                className="w-fit text-[16px] cursor-pointer underline underline-offset-4"
+                onClick={() => navigate("/wishlist")}
+              >
+                Wishlist
+              </li>
+            </>
+          ) : (
+            <>
+              <li
+                className="w-fit text-[16px] cursor-pointer underline underline-offset-4"
+                onClick={() => navigate("/login")}
+              >
+                Login
+              </li>
+              <li
+                className="w-fit text-[16px] cursor-pointer underline underline-offset-4"
+                onClick={() => navigate("/create-account")}
+              >
+                Create Account
+              </li>
+            </>
+          )}
         </ul>
       </div>
 
       <div className="flex flex-col gap-10 tracking-[1px]">
         <p className="capitalize">
-          makam is shoes are some of the best in the market and we are committed
+          Makam shoes are some of the best in the market, and we are committed
           to providing our customers with the best shopping experience possible.
         </p>
 
         <p className="text-center font-semibold">
-          CopyRight &copy; 2024 Makam. All rights reserved.
+          CopyRight &copy; {new Date().getFullYear()} Makam. All rights
+          reserved.
         </p>
       </div>
 
