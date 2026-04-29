@@ -19,11 +19,14 @@ const allowedOrigins = new Set([...defaultOrigins, ...envOrigins]);
 app.use((req, res, next) => {
   const requestOrigin = req.headers.origin;
   
-  // In production on Vercel, allow same-origin requests
-  const isSameOrigin = requestOrigin && process.env.NODE_ENV === "production";
-  const isAllowed = requestOrigin && (isSameOrigin || allowedOrigins.has(requestOrigin));
+  if (!requestOrigin) {
+    return next();
+  }
 
-  if (isAllowed) {
+  const isAllowed = allowedOrigins.has(requestOrigin);
+  const isSameOriginRequest = !requestOrigin.includes('localhost') && !requestOrigin.includes('127.0.0.1');
+
+  if (isAllowed || isSameOriginRequest) {
     res.header("Access-Control-Allow-Origin", requestOrigin);
     res.header("Vary", "Origin");
     res.header("Access-Control-Allow-Credentials", "true");
